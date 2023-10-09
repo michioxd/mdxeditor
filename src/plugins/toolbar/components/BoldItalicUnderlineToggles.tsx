@@ -17,9 +17,9 @@ export const BoldItalicUnderlineToggles: React.FC = () => {
   const italicIsOn = (currentFormat & IS_ITALIC) !== 0
   const underlineIsOn = (currentFormat & IS_UNDERLINE) !== 0
 
-  const boldTitle = boldIsOn ? 'Remove bold' : 'Bold'
-  const italicTitle = italicIsOn ? 'Remove italic' : 'Italic'
-  const underlineTitle = underlineIsOn ? 'Remove underline' : 'Underline'
+  const boldTitle = boldIsOn ? 'Bỏ chữ đậm' : 'Chữ đậm'
+  const italicTitle = italicIsOn ? 'Bỏ chữ nghiêng' : 'Chữ nghiêng'
+  const underlineTitle = underlineIsOn ? 'Bỏ chữ gạch chân' : 'Chữ gạch chân'
 
   return (
     <MultipleChoiceToggleGroup

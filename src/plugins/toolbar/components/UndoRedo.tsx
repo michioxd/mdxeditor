@@ -42,14 +42,14 @@ export const UndoRedo: React.FC = () => {
     <MultipleChoiceToggleGroup
       items={[
         {
-          title: IS_APPLE ? 'Undo (⌘Z)' : 'Undo (Ctrl+Z)',
+          title: IS_APPLE ? 'Hoàn tác (⌘Z)' : 'Hoàn tác (Ctrl+Z)',
           disabled: !canUndo,
           contents: <UndoIcon />,
           active: false,
           onChange: () => activeEditor?.dispatchCommand(UNDO_COMMAND, undefined)
         },
         {
-          title: IS_APPLE ? 'Redo (⌘Y)' : 'Redo (Ctrl+Y)',
+          title: IS_APPLE ? 'Làm lại (⌘Y)' : 'Làm lại (Ctrl+Y)',
           disabled: !canRedo,
           contents: <RedoIcon />,
           active: false,

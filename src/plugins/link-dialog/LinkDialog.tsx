@@ -65,22 +65,22 @@ export function LinkEditForm({ url, title, onSubmit, onCancel, linkAutocompleteS
           suggestions={linkAutocompleteSuggestions}
           setValue={setValue}
           control={control}
-          placeholder="Select or paste an URL"
+          placeholder="Chọn hoặc dán liên kết URL"
           autofocus
         />
       </div>
 
       <div className={styles.formField}>
-        <label htmlFor="link-title">Title</label>
+        <label htmlFor="link-title">Tiêu đề</label>
         <input id="link-title" className={styles.textInput} size={40} {...register('title')} />
       </div>
 
       <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 'var(--spacing-2)' }}>
         <button type="submit" title="Set URL" aria-label="Set URL" className={classNames(styles.primaryButton)}>
-          Save
+          Lưu lại
         </button>
         <button type="reset" title="Cancel change" aria-label="Cancel change" className={classNames(styles.secondaryButton)}>
-          Cancel
+          Huỷ
         </button>
       </div>
     </form>
@@ -171,8 +171,8 @@ export const LinkDialog: React.FC = () => {
                 <Tooltip.Root open={copyUrlTooltipOpen}>
                   <Tooltip.Trigger asChild>
                     <ActionButton
-                      title="Copy to clipboard"
-                      aria-label="Copy link URL"
+                      title="Sao chép URL"
+                      aria-label="Sao chép URL"
                       onClick={() => {
                         void window.navigator.clipboard.writeText(linkDialogState.url).then(() => {
                           setCopyUrlTooltipOpen(true)
@@ -185,14 +185,14 @@ export const LinkDialog: React.FC = () => {
                   </Tooltip.Trigger>
                   <Tooltip.Portal container={editorRootElementRef?.current}>
                     <Tooltip.Content className={classNames(styles.tooltipContent)} sideOffset={5}>
-                      Copied!
+                      Đã sao chép!
                       <Tooltip.Arrow />
                     </Tooltip.Content>
                   </Tooltip.Portal>
                 </Tooltip.Root>
               </Tooltip.Provider>
 
-              <ActionButton title="Remove link" aria-label="Remove link" onClick={() => removeLink(true)}>
+              <ActionButton title="Xoá liên kết" aria-label="Xoá liên kết" onClick={() => removeLink(true)}>
                 <LinkOffIcon />
               </ActionButton>
             </>

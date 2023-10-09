@@ -19,15 +19,15 @@ export const BlockTypeSelect = () => {
   if (!hasQuote && !hasHeadings) {
     return null
   }
-  const items: { label: string; value: BlockType }[] = [{ label: 'Paragraph', value: 'paragraph' }]
+  const items: { label: string; value: BlockType }[] = [{ label: 'Đoạn văn', value: 'paragraph' }]
 
   if (hasQuote) {
-    items.push({ label: 'Quote', value: 'quote' })
+    items.push({ label: 'Trích dẫn', value: 'quote' })
   }
 
   if (hasHeadings) {
     const [allowedHeadingLevels] = headingsPluginHooks.useEmitterValues('allowedHeadingLevels')
-    items.push(...allowedHeadingLevels.map((n) => ({ label: `Heading ${n}`, value: `h${n}` } as const)))
+    items.push(...allowedHeadingLevels.map((n) => ({ label: `Tiêu đề ${n}`, value: `h${n}` } as const)))
   }
 
   return (
@@ -50,8 +50,8 @@ export const BlockTypeSelect = () => {
             }
         }
       }}
-      triggerTitle="Select block type"
-      placeholder="Block type"
+      triggerTitle="Chọn kiểu chữ"
+      placeholder="Kiểu chữ"
       items={items}
     />
   )

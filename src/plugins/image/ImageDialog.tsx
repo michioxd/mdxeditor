@@ -53,11 +53,11 @@ export const ImageDialog: React.FC = () => {
             className={styles.multiFieldForm}
           >
             <div className={styles.formField}>
-              <label htmlFor="file">Upload an image from your device:</label>
+              <label htmlFor="file">Tải hình ảnh lên từ thiết bị của bạn:</label>
               <input type="file" {...register('file')} />
             </div>
 
-            <div className={styles.formField}>
+            {/* <div className={styles.formField}>
               <label htmlFor="src">Or add an image from an URL:</label>
               <DownshiftAutoComplete
                 initialInputValue={state.type === 'editing' ? state.initialValues.src || '' : ''}
@@ -67,25 +67,25 @@ export const ImageDialog: React.FC = () => {
                 control={control}
                 placeholder="Select or paste an image src"
               />
-            </div>
+            </div> */}
 
             <div className={styles.formField}>
-              <label htmlFor="alt">Alt:</label>
+              <label htmlFor="alt">Văn bản thay thế (Alt):</label>
               <input type="text" {...register('altText')} className={styles.textInput} />
             </div>
 
             <div className={styles.formField}>
-              <label htmlFor="title">Title:</label>
+              <label htmlFor="title">Tiêu đề:</label>
               <input type="text" {...register('title')} className={styles.textInput} />
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 'var(--spacing-2)' }}>
               <button type="submit" title="Save" aria-label="Save" className={classNames(styles.primaryButton)}>
-                Save
+                Lưu lại
               </button>
               <Dialog.Close asChild>
                 <button type="reset" title="Cancel" aria-label="Cancel" className={classNames(styles.secondaryButton)}>
-                  Cancel
+                  Huỷ
                 </button>
               </Dialog.Close>
             </div>
