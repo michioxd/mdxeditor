@@ -1,6 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import classNames from 'classnames'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import styles from '../../styles/ui.module.css'
 import { corePluginHooks } from '../core/index'
@@ -19,6 +19,7 @@ export const ImageDialog: React.FC = () => {
   const saveImage = imagePluginHooks.usePublisher('saveImage')
   const [editorRootElementRef] = corePluginHooks.useEmitterValues('editorRootElementRef')
   const closeImageDialog = imagePluginHooks.usePublisher('closeImageDialog')
+  const [loading, setLoading] = useState(false)
 
   const { register, handleSubmit, control, setValue, reset } = useForm<ImageFormFields>({
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
@@ -43,6 +44,25 @@ export const ImageDialog: React.FC = () => {
             e.preventDefault()
           }}
         >
+          {loading && (
+            <div
+              style={{
+                position: 'absolute',
+                zIndex: 99,
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'rgba(0,0,0,.6)',
+                color: "#fff"
+              }}
+            >
+              Vui lòng đợi...
+            </div>
+          )}
           <form
             onSubmit={(e) => {
               void handleSubmit(saveImage)(e)
@@ -55,6 +75,9 @@ export const ImageDialog: React.FC = () => {
             <div className={styles.formField}>
               <label htmlFor="file">Tải hình ảnh lên từ thiết bị của bạn:</label>
               <input type="file" {...register('file')} />
+              <label htmlFor="file" style={{ color: "gray", fontSize: 10 }}>
+                .JPG, .PNG, .GIF, tối đa 5MB
+              </label>
             </div>
 
             {/* <div className={styles.formField}>
@@ -80,7 +103,7 @@ export const ImageDialog: React.FC = () => {
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 'var(--spacing-2)' }}>
-              <button type="submit" title="Save" aria-label="Save" className={classNames(styles.primaryButton)}>
+              <button onClick={() => setLoading(true)} type="submit" title="Save" aria-label="Save" className={classNames(styles.primaryButton)}>
                 Lưu lại
               </button>
               <Dialog.Close asChild>
