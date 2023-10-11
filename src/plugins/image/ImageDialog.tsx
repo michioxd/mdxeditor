@@ -32,6 +32,7 @@ export const ImageDialog: React.FC = () => {
       onOpenChange={(open) => {
         if (!open) {
           closeImageDialog(true)
+          setLoading(false)
           reset({ src: '', title: '', altText: '' })
         }
       }}
